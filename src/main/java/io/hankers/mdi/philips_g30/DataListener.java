@@ -97,23 +97,48 @@ public class DataListener extends Thread {
 		}
 
 		private int cut(byte[] buf, int count) {
+			// Definition
+			// ubyte 0xAA
+			// ubyte type
+			// ubyte length
+			// byte[length] data
+			// ubyte 0xCC
 			int posStart = -1;
 			int posEnd = -1;
 			int lastEnd = -1;
+			//int type = 0;
+			int length = 0;
 			for (int i = 0; i < count && i < buf.length; i++) {
 				switch (buf[i]) {
 				case BYTE_START:
 					posStart = i;
-					break;
-				case BYTE_END:
-					posEnd = i;
-					if (posStart >= 0 && posEnd >= 0) {
-						lastEnd = i;
+					//type = buf[i + 1];
+					length = buf[i + 2];
+					posEnd = i + length + 3;
+					if (posEnd < count) {
 						process(buf, posStart + 1, posEnd - posStart - 1);
+						i = lastEnd = posEnd;
+					} else {
+						i = count + 1;
 					}
 					break;
 				}
 			}
+			
+//			for (int i = 0; i < count && i < buf.length; i++) {
+//				switch (buf[i]) {
+//				case BYTE_START:
+//					posStart = i;
+//					break;
+//				case BYTE_END:
+//					posEnd = i;
+//					if (posStart >= 0 && posEnd >= 0) {
+//						lastEnd = i;
+//						process(buf, posStart + 1, posEnd - posStart - 1);
+//					}
+//					break;
+//				}
+//			}
 			return lastEnd + 1;
 		}
 
