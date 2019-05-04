@@ -148,28 +148,28 @@ public class Models {
 		public String toString() {
 			JSONObject json = new JSONObject();
 			if (hr != null && hr.value() > 0 && hr.value() < 351) {
-				json.put("HEART_BEAT", hr.value());
+				json.put("HR", hr.value());
 			}
 			if (pulse != null && pulse.value() > 0 && pulse.value() < 351) {
 				json.put("PULSE", pulse.value());
 			}
 			if (sys != null && sys.value() > 0 && sys.value() < 351) {
-				json.put("NBP_SYS", sys.value());
+				json.put("NBPS", sys.value());
 			}
 			if (dia != null && dia.value() > 0 && dia.value() < 351) {
-				json.put("NBP_DIA", dia.value());
+				json.put("NBPD", dia.value());
 			}
 			if (mean != null && mean.value() > 0 && mean.value() < 351) {
-				json.put("NBP_MEAN", mean.value());
+				json.put("NBPM", mean.value());
 			}
 			if (sys2 != null && sys2.value() > 0 && sys2.value() < 351) {
-				json.put("IBP_SYS", sys2.value());
+				json.put("ABPS", sys2.value());
 			}
 			if (dia2 != null && dia2.value() > 0 && dia2.value() < 351) {
-				json.put("IBP_DIA", dia2.value());
+				json.put("ABPD", dia2.value());
 			}
 			if (mean2 != null && mean2.value() > 0 && mean2.value() < 351) {
-				json.put("IBP_MEAN", mean2.value());
+				json.put("ABPM", mean2.value());
 			}
 			if (temp != null && !temp.isEmpty()) {
 				json.put("TEMP", temp);
@@ -178,7 +178,7 @@ public class Models {
 				json.put("SPO2", spo2.value());
 			}
 			if (rr != null && rr.value() > 0 && rr.value() < 351) {
-				json.put("RESP_RATE", rr.value());
+				json.put("RESP", rr.value());
 			}
 			if (etco2 != null && etco2.value() > 0 && etco2.value() < 351) {
 				json.put("ETCO2", etco2.value());
